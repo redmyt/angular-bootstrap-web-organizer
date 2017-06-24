@@ -8,6 +8,7 @@ html, css, bootstrap, js, angularJs, pug, scss, JSON, Gulp, NPM, Git
 
 ## GitHub nicknames list of developers team:
 * [Dmytro](https://github.com/dmytro-revak)
+* [Vasyl](https://github.com/Banderstadt)
 
 ## Code convention:
 
