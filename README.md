@@ -1,14 +1,15 @@
-# Angular/Bootstrap Web Organizer
+# AngularJS/Bootstrap Web Organizer
 
 ## Description:
 ...
 
 ## Used Technologies/Tools:
-html, css, bootstrap, js, angularJs, pug, scss, JSON, Gulp, NPM, Git
+HTML, CSS, JS, Bootstrap 3, AngularJS, pug, scss, JSON, Gulp, NPM, Git
 
 ## GitHub nicknames list of developers team:
 * [Dmytro](https://github.com/dmytro-revak)
 * [Vasyl](https://github.com/Banderstadt)
+* [Iryna](https://github.com/iriza7)
 
 ## Code convention:
 
@@ -22,6 +23,6 @@ html, css, bootstrap, js, angularJs, pug, scss, JSON, Gulp, NPM, Git
 
 * Use double quotes syntax
 
-* Implement two person code peer-review
+* Implement two person peer code-review
 
 * Deprecated nonsense commit messages
