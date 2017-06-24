@@ -4,7 +4,7 @@
 ...
 
 ## Used Technologies/Tools:
-HTML, CSS, JS, Bootstrap 3, AngularJS, pug, scss, JSON, Gulp, NPM, Git
+HTML, CSS, JS, Bootstrap 3, AngularJS, pug, scss, JSON, Gulp, NPM, Git.
 
 ## GitHub nicknames list of developers team:
 * [Dmytro](https://github.com/dmytro-revak)
@@ -15,14 +15,14 @@ HTML, CSS, JS, Bootstrap 3, AngularJS, pug, scss, JSON, Gulp, NPM, Git
 
 * Use 4 spaces indentation;
 
-* Use Bootstrap-grid layouts
+* Use Bootstrap-grid layouts;
 
-* Use lower-case and hyphens "-" for .scss and .pug files and folders
+* Use lower-case and hyphens "-" for .scss and .pug files and folders;
 
-* Use "the same line braces style" for .js files
+* Use "the same line braces style" for .js files;
 
-* Use double quotes syntax
+* Use double quotes syntax;
 
-* Implement two person peer code-review
+* Implement two person peer code-review;
 
-* Deprecated nonsense commit messages
+* Deprecated nonsense commit messages.
