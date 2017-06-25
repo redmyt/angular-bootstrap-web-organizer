@@ -1,4 +1,8 @@
 {
+    "cssFiles": [
+        "./src/assets/libs/bootstrap.scss",
+        "./src/assets/scss/main.scss"
+    ],
     "jsLibs": [
         "./node_modules/angular/angular.min.js",
         "./node_modules/angular-route/angular-route.min.js",
@@ -7,6 +11,7 @@
     ],
     "jsApp": [
         "./src/app/app.js",
-        "./src/app/config.js"
+        "./src/app/config.js",
+        "./src/app/components/home/homeController.js"
     ]
 }

@@ -31,17 +31,18 @@ gulp.task('views', function() {
     var viewsTasks = components.map(function(component) {
         return gulp.src( path.join(componentsPath, component, '/*.pug') )
                    .pipe( pug() )
-                   .pipe( gulp.dest('build/app/' + component) );    
+                   .pipe( gulp.dest('build/app/components/' + component) );    
    });
    return merge(viewsTasks);
 });
 
 gulp.task('sass', function() {
-    gulp.src('./src/assets/sass/main.sass')
+    gulp.src( require('./dependencies.json').cssFiles )
+        .pipe( concat('main.scss') )
         .pipe( sass() )
         .pipe( autopref() )
         .pipe( cleanCSS() )
-        .pipe( gulp.dest('build/assets/css/') );
+        .pipe( gulp.dest('build/assets/css') );
 });
 
 gulp.task('jsLibs', function() {
@@ -55,7 +56,7 @@ gulp.task('jsApp', function() {
         .pipe( ngAnnotate() )
         .pipe( uglify() )
         .pipe( concat('app.js') )
-        .pipe( gulp.dest('build/app/') );
+        .pipe( gulp.dest('build/app') );
 });
 
 gulp.task('watch', function() {
