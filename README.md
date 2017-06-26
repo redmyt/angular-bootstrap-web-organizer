@@ -17,11 +17,11 @@ HTML, CSS, JS, Bootstrap 3, AngularJS, pug, scss, JSON, Gulp, NPM, Git.
 
 * Use Bootstrap-grid layouts;
 
-* Use lower-case and hyphens "-" for .scss and .pug files and folders;
+* Name mask for branches US_[name-of-section]_branch;
+
+* Use camel-case name rules for names of files and folders;
 
 * Use "the same line braces style" for .js files;
-
-* Use double quotes syntax;
 
 * Implement two person peer code-review;
 
