@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     path = require('path'),
     merge = require('merge-stream'),
     pug = require('gulp-pug'),
-    sass = require('gulp-sass'),
+    scss = require('gulp-sass'),
     autopref = require('gulp-autoprefixer'),
     cleanCSS = require('gulp-clean-css'),
     ngAnnotate = require('gulp-ng-annotate'),
@@ -36,10 +36,10 @@ gulp.task('views', function() {
    return merge(viewsTasks);
 });
 
-gulp.task('sass', function() {
+gulp.task('scss', function() {
     gulp.src( require('./dependencies.json').cssFiles )
         .pipe( concat('main.scss') )
-        .pipe( sass() )
+        .pipe( scss() )
         .pipe( autopref() )
         .pipe( cleanCSS() )
         .pipe( gulp.dest('build/assets/css') );
@@ -61,7 +61,7 @@ gulp.task('jsApp', function() {
 
 gulp.task('watch', function() {
     gulp.watch('src/**/*.pug', ['index', 'views']);
-    gulp.watch('src/**/*.sass', ['sass']);
+    gulp.watch('src/**/*.scss', ['scss']);
     gulp.watch('src/app/**/*.js', ['jsApp']);
 });
 
@@ -70,7 +70,7 @@ gulp.task(
     [
         'index', 
         'views', 
-        'sass', 
+        'scss', 
         'jsLibs', 
         'jsApp'
     ]

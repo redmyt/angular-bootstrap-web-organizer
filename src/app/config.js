@@ -4,8 +4,8 @@ webOrganizerApp.config(function($routeProvider) {
         redirectTo: '/homePage'
     })
     .when('/homePage', {
-        templateUrl : '/app/components/home/homeView.html',
-        controller: '/app/components/home/homeController.js',
+        templateUrl : './app/components/home/homeView.html',
+        controller: 'homeController',
         controllerAs: 'home'
     })
     .otherwise({

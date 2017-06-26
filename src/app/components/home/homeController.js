@@ -1,3 +1,4 @@
-webOrganizerApp.controller('homeController', function() { 
-    vm = this;
+webOrganizerApp.controller('homeController', function() {
+    var vm = this;
+    vm.test = 'test controller field'
 });
