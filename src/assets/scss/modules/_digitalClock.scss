@@ -1,0 +1,110 @@
+h3 {
+  margin-top: 10vh;
+  text-align: center;
+  font-family: Lato, sans-serif;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.clicker {
+  display: block;
+  margin: 0px auto;
+  background-color: #98C93C;
+  border: none;
+  padding: 10px 20px;
+  color: #333;
+  font-weight: 900;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 50ms ease;
+  outline: none;
+}
+
+.clicker:active {
+  box-shadow: 0px 0px 0px rgba(0,0,0,0.5);
+  transform: translate(5px, 5px);
+}
+
+.clock-wrapper {
+  width: 250px;
+  height: 250px;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%);
+  position: relative;
+  z-index: 5;
+    
+}
+
+.clock-face {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: center;
+  background-image: url('http://www.ewt.biz/wp-content/uploads/2016/05/clockFace.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 6;
+}
+
+.hour-hand {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: center;
+  background-image: url('http://www.ewt.biz/wp-content/uploads/2016/05/hourHand.png');
+  background-position: 60% 60%;
+  background-repeat: no-repeat;
+  z-index: 7;
+  animation: clock-effect 120s infinite;
+  animation-timing-function: linear;
+}
+
+.minute-hand {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: center;
+  background-image: url('http://www.ewt.biz/wp-content/uploads/2016/05/minHand.png');
+  background-position: 50% 25%;
+  background-repeat: no-repeat;
+  z-index: 8;
+  animation: clock-effect 45s infinite;
+  animation-timing-function: linear;
+}
+
+.second-hand {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: center;
+  background-image: url('http://www.ewt.biz/wp-content/uploads/2016/05/secHand.png');
+  background-position: 35% 63%;
+  background-repeat: no-repeat;
+  z-index: 9;
+  animation: clock-effect 15s infinite;
+  animation-timing-function: linear;
+}
+
+.clock-center {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: center;
+  background-image: url('http://www.ewt.biz/wp-content/uploads/2016/05/clockCenter.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 10;
+}
+
+@keyframes clock-effect {
+  0% {
+    transform: rotate(-360deg);
+  }
+}
+
+.new {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
