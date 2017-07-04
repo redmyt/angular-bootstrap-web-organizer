@@ -1,0 +1,21 @@
+.calculator-wrapper {
+    background: grey;
+    padding: 25px 0
+}
+
+.numbers-field {
+    text-align: right;
+
+    &:placeholder-shown {
+        @extend .numbers-field;
+    }
+
+}
+
+.number-buttons-row {
+    margin-bottom: 15px;
+}
+
+.number-button {
+    width: 100%;
+}
