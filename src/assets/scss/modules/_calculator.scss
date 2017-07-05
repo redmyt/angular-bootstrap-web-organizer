@@ -3,11 +3,11 @@
     padding: 25px 0
 }
 
-.numbers-field {
+.enter-field {
     text-align: right;
 
     &:placeholder-shown {
-        @extend .numbers-field;
+        @extend .enter-field;
     }
 
 }

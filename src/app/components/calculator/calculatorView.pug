@@ -5,8 +5,8 @@
                 .col-lg-12
                     .input-group.input-group-lg.form-group
                         span.input-group-btn
-                            button.btn.btn-default.btn-lg.btn-warning(type="button") C
-                        input.form-control.numbers-field(type="text" placeholder="Enter the number")
+                            button.btn.btn-default.btn-lg.btn-warning(type="button" ng-click = "calculator.removeLastChar()") C
+                        input.form-control.enter-field(type="text" placeholder="0" ng-model = "calculator.enterField")
             .row.number-buttons-row
                 .col-lg-6
                     .form-group
@@ -52,9 +52,10 @@
                                 button.btn.btn-lg.btn-warning.calculator-button(type="button") ctg
                         .row.buttons-row
                             .col-lg-6
-                                button.btn.btn-lg.btn-warning.calculator-button(type="button") sqrt
+                                button.btn.btn-lg.btn-warning.calculator-button(type="button") &radic;
                             .col-lg-6
-                                button.btn.btn-lg.btn-warning.calculator-button(type="button") pow
+                                button.btn.btn-lg.btn-warning.calculator-button(type="button") x
+                                    sup n
                         .row.buttons-row
                             .col-lg-12
                                 button.btn.btn-lg.btn-success.calculator-button(type="button") =
