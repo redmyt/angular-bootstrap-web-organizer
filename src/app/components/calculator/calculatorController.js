@@ -1,4 +1,4 @@
-webOrganizerApp.controller('calculatorController', function() {
+webOrganizerApp.controller('calculatorController', ['calculatorService', function(calculatorService) {
 
     var vm = this;
 
@@ -22,4 +22,9 @@ webOrganizerApp.controller('calculatorController', function() {
     vm.enterOperatorSymbol = function(operatorSymbol) {
         vm.enterField += " " + operatorSymbol + " ";
     };
-});
+
+    vm.implementCalculating = function() {
+        var mathExpression = vm.enterField;
+        calculatorService.implementCalculating(mathExpression);
+    };
+}]);
