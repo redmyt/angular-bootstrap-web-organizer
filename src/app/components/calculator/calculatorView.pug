@@ -12,64 +12,64 @@
                     .form-group
                         .row.buttons-row
                             .col-lg-4
-                                button.btn.btn-lg.btn-info.calculator-button(type="button") 7
+                                button.btn.btn-lg.btn-info.calculator-button(type="button" ng-click = "calculator.enterNumericSymbol(7)") 7
                             .col-lg-4
-                                button.btn.btn-lg.btn-info.calculator-button(type="button") 8
+                                button.btn.btn-lg.btn-info.calculator-button(type="button" ng-click = "calculator.enterNumericSymbol(8)") 8
                             .col-lg-4
-                                button.btn.btn-lg.btn-info.calculator-button(type="button") 9
+                                button.btn.btn-lg.btn-info.calculator-button(type="button" ng-click = "calculator.enterNumericSymbol(9)") 9
                         .row.buttons-row
                             .col-lg-4
-                                button.btn.btn-lg.btn-info.calculator-button(type="button") 4
+                                button.btn.btn-lg.btn-info.calculator-button(type="button" ng-click = "calculator.enterNumericSymbol(4)") 4
                             .col-lg-4
-                                button.btn.btn-lg.btn-info.calculator-button(type="button") 5
+                                button.btn.btn-lg.btn-info.calculator-button(type="button" ng-click = "calculator.enterNumericSymbol(5)") 5
                             .col-lg-4
-                                button.btn.btn-lg.btn-info.calculator-button(type="button") 6
+                                button.btn.btn-lg.btn-info.calculator-button(type="button" ng-click = "calculator.enterNumericSymbol(6)") 6
                         .row.buttons-row
                             .col-lg-4
-                                button.btn.btn-lg.btn-info.calculator-button(type="button") 1
+                                button.btn.btn-lg.btn-info.calculator-button(type="button" ng-click = "calculator.enterNumericSymbol(1)") 1
                             .col-lg-4
-                                button.btn.btn-lg.btn-info.calculator-button(type="button") 2
+                                button.btn.btn-lg.btn-info.calculator-button(type="button" ng-click = "calculator.enterNumericSymbol(2)") 2
                             .col-lg-4
-                                button.btn.btn-lg.btn-info.calculator-button(type="button") 3
+                                button.btn.btn-lg.btn-info.calculator-button(type="button" ng-click = "calculator.enterNumericSymbol(3)") 3
                         .row.buttons-row
                             .col-lg-4
-                                button.btn.btn-lg.btn-warning.calculator-button(type="button") .
+                                button.btn.btn-lg.btn-warning.calculator-button(type="button" ng-click = "calculator.enterNumericSymbol('.')") .
                             .col-lg-4
-                                button.btn.btn-lg.btn-info.calculator-button(type="button") 0
+                                button.btn.btn-lg.btn-info.calculator-button(type="button" ng-click = "calculator.enterNumericSymbol(0)") 0
                             .col-lg-4
-                                button.btn.btn-lg.btn-warning.calculator-button(type="button") More
+                                button.btn.btn-lg.btn-warning.calculator-button(type="button" ng-click = "calculator.cleanEnterField()") Clean
                 .col-lg-4
                     .form-group
                         .row.buttons-row
                             .col-lg-6
-                                button.btn.btn-lg.btn-warning.calculator-button(type="button") sin
+                                button.btn.btn-lg.btn-warning.calculator-button(type="button" ng-click = "calculator.enterOperatorSymbol('sin')") sin
                             .col-lg-6
-                                button.btn.btn-lg.btn-warning.calculator-button(type="button") cos
+                                button.btn.btn-lg.btn-warning.calculator-button(type="button" ng-click = "calculator.enterOperatorSymbol('cos')") cos
                         .row.buttons-row
                             .col-lg-6
-                                button.btn.btn-lg.btn-warning.calculator-button(type="button") tan
+                                button.btn.btn-lg.btn-warning.calculator-button(type="button" ng-click = "calculator.enterOperatorSymbol('tan')") tan
                             .col-lg-6
-                                button.btn.btn-lg.btn-warning.calculator-button(type="button") ctg
+                                button.btn.btn-lg.btn-warning.calculator-button(type="button" ng-click = "calculator.enterOperatorSymbol('ctg')") ctg
                         .row.buttons-row
                             .col-lg-6
-                                button.btn.btn-lg.btn-warning.calculator-button(type="button") &radic;
+                                button.btn.btn-lg.btn-warning.calculator-button(type="button" ng-click = "calculator.enterOperatorSymbol('sqrt')") &radic;
                             .col-lg-6
-                                button.btn.btn-lg.btn-warning.calculator-button(type="button") x
+                                button.btn.btn-lg.btn-warning.calculator-button(type="button" ng-click = "calculator.enterOperatorSymbol('**')") x
                                     sup n
                         .row.buttons-row
                             .col-lg-12
-                                button.btn.btn-lg.btn-success.calculator-button(type="button") =
+                                button.btn.btn-lg.btn-success.calculator-button(type="button" ng-click = "calculator.enterOperatorSymbol('=')") =
                 .col-lg-2
                     .form-group
                         .row.buttons-row
                             .col-lg-12
-                                button.btn.btn-lg.btn-primary.calculator-button(type="button") /
+                                button.btn.btn-lg.btn-primary.calculator-button(type="button" ng-click = "calculator.enterOperatorSymbol('/')") /
                         .row.buttons-row
                             .col-lg-12
-                                button.btn.btn-lg.btn-primary.calculator-button(type="button") *
+                                button.btn.btn-lg.btn-primary.calculator-button(type="button" ng-click = "calculator.enterOperatorSymbol('*')") *
                         .row.buttons-row
                             .col-lg-12
-                                button.btn.btn-lg.btn-primary.calculator-button(type="button") -
+                                button.btn.btn-lg.btn-primary.calculator-button(type="button" ng-click = "calculator.enterOperatorSymbol('-')") -
                         .row.buttons-row
                             .col-lg-12
-                                button.btn.btn-lg.btn-primary.calculator-button(type="button") +
+                                button.btn.btn-lg.btn-primary.calculator-button(type="button" ng-click = "calculator.enterOperatorSymbol('+')") +
