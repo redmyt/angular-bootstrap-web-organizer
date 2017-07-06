@@ -19,8 +19,13 @@ webOrganizerApp.controller('calculatorController', ['calculatorService', functio
         vm.enterField += numericSymbol;
     };
 
-    vm.enterOperatorSymbol = function(operatorSymbol) {
-        vm.enterField += " " + operatorSymbol + " ";
+    vm.enterOperatorSymbol = function(operatorSymbol, isOneArgumentOperator) {
+
+        if (isOneArgumentOperator) {
+            vm.enterField += operatorSymbol + " ";
+        } else {
+            vm.enterField += " " + operatorSymbol + " ";
+        }
     };
 
     vm.implementCalculating = function() {

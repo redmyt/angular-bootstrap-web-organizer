@@ -3,43 +3,73 @@ webOrganizerApp.service('calculatorService', function() {
     var allMathOperators = {
         '+': {
             priority: 1,
-            // implementation: 
+            implementation: function(a, b) {
+                return a + b;
+            },
+            isOneArgumentOperator: false
         },
         '-': {
             priority: 1,
-            // implementation: 
+            implementation: function(a, b) {
+                return a - b;
+            },
+            isOneArgumentOperator: false
         },
         '*': {
             priority: 2,
-            // implementation: 
+            implementation: function(a, b) {
+                return a * b;
+            },
+            isOneArgumentOperator: false
         },
         '/': {
             priority: 2,
-            // implementation: 
+            implementation: function(a, b) {
+                return a / b;
+            },
+            isOneArgumentOperator: false
         },
         'pow': {
             priority: 3,
-            // implementation: 
+            implementation: function(a, b) {
+                return Math.pow(a, b);
+            },
+            isOneArgumentOperator: false
         },
         'sqrt': {
             priority: 3,
-            // implementation: 
+            implementation: function(a) {
+                return Math.sqrt(a);
+            },
+            isOneArgumentOperator: true
         },
         'cos': {
             priority: 4,
-            // implementation: 
+            implementation: function(a) {
+                return Math.cos(a);
+            },
+            isOneArgumentOperator: true
         },
         'sin': {
             priority: 4,
-            // implementation: 
+            implementation: function(a) {
+                return Math.sin(a);
+            },
+            isOneArgumentOperator: true
         },
         'tan': {
             priority: 4,
-            // implementation: 
+            implementation: function(a) {
+                return Math.tan(a);
+            },
+            isOneArgumentOperator: true
         },
-        'ctg': {
+        'atan': {
             priority: 4,
-            // implementation: 
+            implementation: function(a) {
+                return Math.atan(a);
+            },
+            isOneArgumentOperator: true
         }
     };
 
@@ -98,6 +128,12 @@ webOrganizerApp.service('calculatorService', function() {
         return allMathOperators[secondOperator].priority - allMathOperators[firstOperator].priority;
     };
 
+    var calculating = function(mathExpression, mathOperators) {
+
+        for (var i = 0; i < mathOperators.length; i++) {
+            
+        }
+    };
 
     this.implementCalculating = function(mathExpression) {
 
