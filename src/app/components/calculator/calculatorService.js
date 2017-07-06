@@ -94,6 +94,10 @@ webOrganizerApp.service('calculatorService', function() {
         return choosedOperators;
     };
 
+    var sortMathOperators = function(firstOperator, secondOperator) {
+        return allMathOperators[secondOperator].priority - allMathOperators[firstOperator].priority;
+    };
+
 
     this.implementCalculating = function(mathExpression) {
 
@@ -103,7 +107,7 @@ webOrganizerApp.service('calculatorService', function() {
         if (!mathExpressionValidation(separatedMathExpression)) return false;
 
         var currentMathOperators = getCurrentMathOperators(separatedMathExpression);
-        console.log(currentMathOperators);
+        console.log(currentMathOperators.sort(sortMathOperators));
     };
 
 });
