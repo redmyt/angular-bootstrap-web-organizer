@@ -81,6 +81,20 @@ webOrganizerApp.service('calculatorService', function() {
         return isExpressionValid;
     };
 
+    var getCurrentMathOperators = function(mathExpression) {
+
+        var choosedOperators = [];
+
+        for (var i = 0; i < mathExpression.length; i++) {
+            if (mathExpression[i] in allMathOperators) {
+                choosedOperators.push(mathExpression[i]);
+            }
+        }
+
+        return choosedOperators;
+    };
+
+
     this.implementCalculating = function(mathExpression) {
 
         var spaceFreeMathExpression = removeAllSpaces(mathExpression),
@@ -88,7 +102,8 @@ webOrganizerApp.service('calculatorService', function() {
 
         if (!mathExpressionValidation(separatedMathExpression)) return false;
 
-        console.log(a);
+        var currentMathOperators = getCurrentMathOperators(separatedMathExpression);
+        console.log(currentMathOperators);
     };
 
 });
