@@ -128,14 +128,71 @@ webOrganizerApp.service('calculatorService', function() {
         return allMathOperators[secondOperator].priority - allMathOperators[firstOperator].priority;
     };
 
-    var calculating = function(mathExpression, mathOperators) {
+    var getOperatorPosition = function(mathExpression, opertor) {
+        return mathExpression.indexOf(opertor);
+    };
+
+    var getOperatorsArguments = function(mathExpression, operatorPosition, isOneArgumentOperator) {
+
+        var operatorArguments = [];
+
+        if (isOneArgumentOperator) {
+            operatorArguments.push(mathExpression[operatorPosition + 1]);
+        } else {
+            operatorArguments.push(mathExpression[operatorPosition - 1]);
+            operatorArguments.push(mathExpression[operatorPosition + 1]);
+        }
+
+        return operatorArguments;
+    };
+
+    var updateMathExpression = function(mathExpression, result, operatorPosition, isOneArgumentOperator) {
+
+        // var updatedExpression;
+        debugger
+        mathExpression[operatorPosition] = result.toString();
+        if (isOneArgumentOperator) {
+            mathExpression.splice(operatorPosition + 1, 1);
+        } else {
+            mathExpression.splice(operatorPosition + 1, 1);
+            mathExpression.splice(operatorPosition - 1, 1);
+        }
+        return mathExpression;
+    };
+
+    var calculating = function(operator, operatorArguments) {
+        var firstArgument = operatorArguments[0],
+            secondArgument = operatorArguments[1],
+            calculatingFunction = allMathOperators[operator].implementation;
+
+        var result = secondArgument ? calculatingFunction(firstArgument, secondArgument) : calculatingFunction(firstArgument);
+        // var result = secondArgument ? calculatingFunction(firstOperator, secondOperator) : calculatingFunction(firstOperator);
+        return result;
+    };
+
+    var implementCalculating = function(mathExpression, mathOperators) {
+
+        var expresssion = mathExpression;
 
         for (var i = 0; i < mathOperators.length; i++) {
+
+            currentOpe = mathOperators[i];
+
+            var a = getOperatorPosition(expresssion, currentOpe);
+            var b = getOperatorsArguments(expresssion, a, allMathOperators[currentOpe].isOneArgumentOperator);
+
+            // console.log(expresssion);
+            var result = calculating(currentOpe, b);
+            var gg = updateMathExpression(expresssion, result, a, allMathOperators[currentOpe].isOneArgumentOperator);
+            // debugger;
+
+            expresssion = gg;
+            console.log(expresssion);
             
         }
     };
 
-    this.implementCalculating = function(mathExpression) {
+    this.calculatingService = function(mathExpression) {
 
         var spaceFreeMathExpression = removeAllSpaces(mathExpression),
             separatedMathExpression = separateMathExpression(spaceFreeMathExpression);
@@ -143,7 +200,8 @@ webOrganizerApp.service('calculatorService', function() {
         if (!mathExpressionValidation(separatedMathExpression)) return false;
 
         var currentMathOperators = getCurrentMathOperators(separatedMathExpression);
-        console.log(currentMathOperators.sort(sortMathOperators));
+        currentMathOperators.sort(sortMathOperators);
+        implementCalculating(separatedMathExpression, currentMathOperators);
     };
 
 });
