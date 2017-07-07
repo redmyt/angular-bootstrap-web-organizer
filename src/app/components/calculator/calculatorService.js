@@ -90,7 +90,7 @@ webOrganizerApp.service('calculatorService', function() {
         };
 
         mathExpression = mathExpression
-                         .split(/(\+|\-|\*|\/|sqrt|pow|sin|cos|tan|ctg)/)
+                         .split(/(\+|\-|\*|\/|sqrt|pow|sin|cos|tan|atan)/)
                          .filter(filterEmptyElements);
     };
 
@@ -229,6 +229,7 @@ webOrganizerApp.service('calculatorService', function() {
         mathOperators.sort(sortMathOperators);
         calculateCurrentExpression();
         mathOperators = [];
-        return mathExpression[0];
+        console.log(mathExpression[0]);
+        // return mathExpression[0];
     };
 });

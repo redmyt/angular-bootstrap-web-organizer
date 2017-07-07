@@ -29,7 +29,8 @@ webOrganizerApp.controller('calculatorController', ['calculatorService', functio
     };
 
     vm.implementCalculating = function() {
-        var mathExpression = vm.enterField;
-        calculatorService.implementationOfCalculator(mathExpression);
+        var mathExpression = vm.enterField || '';
+        var result = calculatorService.implementationOfCalculator(mathExpression);
+        vm.enterField = result || "Error";
     };
 }]);
