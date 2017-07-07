@@ -126,11 +126,7 @@ webOrganizerApp.service('calculatorService', function() {
         mathExpression.forEach(function(argument, argumentIndex) {
 
             var numberArgument = parseFloat(argument);
-
-            if (numberArgument) {
-                mathExpression[argumentIndex] = numberArgument;
-            }
-
+            if (numberArgument) mathExpression[argumentIndex] = numberArgument;
         });
     };
 
@@ -138,6 +134,7 @@ webOrganizerApp.service('calculatorService', function() {
     var getCurrentMathOperators = function() {
 
         mathExpression.forEach(function(expresssionElement) {
+
             if (expresssionElement in allMathOperators) {
                 mathOperators.push(expresssionElement);
             }
@@ -157,6 +154,7 @@ webOrganizerApp.service('calculatorService', function() {
             currentOperatorPosition = null,
             isCurrentArgumentAcceptOneArgument = null,
             currentOperationResult = null;
+
 
         // Save the current operator type
         var setCurrentOperator = function(operator) {
@@ -187,10 +185,7 @@ webOrganizerApp.service('calculatorService', function() {
         // Calculate the expression for only one operator and save the result in a certain variable
         var calculateOneArgumentExpression = function() {
 
-            var firstArgument = currentOperatorArguments[0],
-                secondArgument = currentOperatorArguments[1],
-                operatorFunction = allMathOperators[currentOperator].implementation;
-
+            var operatorFunction = allMathOperators[currentOperator].implementation;
             currentOperationResult = operatorFunction.apply(this, currentOperatorArguments);
         };
 
@@ -213,7 +208,6 @@ webOrganizerApp.service('calculatorService', function() {
         for (var i = 0; i < mathOperators.length; i++) {
 
             var currentOperatorArguments = [];
-
             setCurrentOperator(mathOperators[i]);
             setCurrentOperatorArgumentsAmount();
             getCurrentOperatorPosition();
@@ -235,7 +229,6 @@ webOrganizerApp.service('calculatorService', function() {
         mathOperators.sort(sortMathOperators);
         calculateCurrentExpression();
         mathOperators = [];
-        // return mathExpression[0];
-        console.log(mathExpression[0]);
+        return mathExpression[0];
     };
 });
