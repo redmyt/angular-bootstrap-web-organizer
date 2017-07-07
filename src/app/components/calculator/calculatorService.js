@@ -74,14 +74,15 @@ webOrganizerApp.service('calculatorService', function() {
         }
     };
 
-    var mathExpression = null;
+    var mathExpression = null,
+        mathOperators = [];
 
     // Remove all unneeded spaces
     var removeAllExpressionSpaces = function() {
         mathExpression = mathExpression.replace(/\s+/g, '');
     };
 
-    // Separate math expression on numbers and math operators
+    // Separate the math expression on numbers and math operators
     var separateMathExpression = function() {
 
         var filterEmptyElements = function(arrayElement) {
@@ -119,7 +120,7 @@ webOrganizerApp.service('calculatorService', function() {
         return isExpressionValid;
     };
 
-    // Switch string argument representation to it number representation
+    // Switch the string argument representation to it number representation
     var convertExpressionArgumentToNumbers = function() {
 
         mathExpression.forEach(function(argument, argumentIndex) {
@@ -133,87 +134,93 @@ webOrganizerApp.service('calculatorService', function() {
         });
     };
 
-// -----------------------------------------------------------------------
-TODO
+    // Save all operators which are used by user to variable 
+    var getCurrentMathOperators = function() {
 
-    var getCurrentMathOperators = function(mathExpression) {
-
-        var choosedOperators = [];
-
-        for (var i = 0; i < mathExpression.length; i++) {
-            if (mathExpression[i] in allMathOperators) {
-                choosedOperators.push(mathExpression[i]);
+        mathExpression.forEach(function(expresssionElement) {
+            if (expresssionElement in allMathOperators) {
+                mathOperators.push(expresssionElement);
             }
-        }
-
-        return choosedOperators;
+        });
     };
 
+    // Function which sorts the math operators based on their priority
     var sortMathOperators = function(firstOperator, secondOperator) {
         return allMathOperators[secondOperator].priority - allMathOperators[firstOperator].priority;
     };
 
-    var getOperatorPosition = function(mathExpression, opertor) {
-        return mathExpression.indexOf(opertor);
-    };
+    // Evaluate an expression which is entered by user
+    var calculateCurrentExpression = function() {
 
-    var getOperatorsArguments = function(mathExpression, operatorPosition, isOneArgumentOperator) {
+        // Variables for saving the current operator parameters
+        var currentOperator = null,
+            currentOperatorPosition = null,
+            isCurrentArgumentAcceptOneArgument = null,
+            currentOperationResult = null;
 
-        var operatorArguments = [];
+        // Save the current operator type
+        var setCurrentOperator = function(operator) {
+            currentOperator = operator;
+        };
 
-        if (isOneArgumentOperator) {
-            operatorArguments.push(mathExpression[operatorPosition + 1]);
-        } else {
-            operatorArguments.push(mathExpression[operatorPosition - 1]);
-            operatorArguments.push(mathExpression[operatorPosition + 1]);
-        }
+        // Get amount of the operator's arguments
+        var setCurrentOperatorArgumentsAmount = function() {
+            isCurrentArgumentAcceptOneArgument = allMathOperators[currentOperator].isOneArgumentOperator;
+        };
 
-        return operatorArguments;
-    };
+        // Get the position of the certain operator in the math expression array
+        var getCurrentOperatorPosition = function() {
+            currentOperatorPosition = mathExpression.indexOf(currentOperator);
+        };
 
-    var updateMathExpression = function(mathExpression, result, operatorPosition, isOneArgumentOperator) {
+        // Get and save the current operator arguments
+        var getCurrentOperatorArguments = function() {
 
-        // var updatedExpression;
-        // debugger
-        mathExpression[operatorPosition] = result.toString();
-        if (isOneArgumentOperator) {
-            mathExpression.splice(operatorPosition + 1, 1);
-        } else {
-            mathExpression.splice(operatorPosition + 1, 1);
-            mathExpression.splice(operatorPosition - 1, 1);
-        }
-        return mathExpression;
-    };
+            if (isCurrentArgumentAcceptOneArgument) {
+                currentOperatorArguments.push(mathExpression[currentOperatorPosition + 1]);
+            } else {
+                currentOperatorArguments.push(mathExpression[currentOperatorPosition - 1]);
+                currentOperatorArguments.push(mathExpression[currentOperatorPosition + 1]);
+            }
+        };
 
-    var calculating = function(operator, operatorArguments) {
-        var firstArgument = operatorArguments[0],
-            secondArgument = operatorArguments[1],
-            calculatingFunction = allMathOperators[operator].implementation;
+        // Calculate the expression for only one operator and save the result in a certain variable
+        var calculateOneArgumentExpression = function() {
 
-        var result = secondArgument ? calculatingFunction(firstArgument, secondArgument) : calculatingFunction(firstArgument);
-        // var result = secondArgument ? calculatingFunction(firstOperator, secondOperator) : calculatingFunction(firstOperator);
-        return result;
-    };
+            var firstArgument = currentOperatorArguments[0],
+                secondArgument = currentOperatorArguments[1],
+                operatorFunction = allMathOperators[currentOperator].implementation;
 
-    var implementCalculating = function(mathExpression, mathOperators) {
+            currentOperationResult = operatorFunction.apply(this, currentOperatorArguments);
+        };
 
-        var expresssion = mathExpression;
+        // Save result which was being produced after calculation finish instead of a wasted operator
+        var updateMathExpression = function() {
+            mathExpression[currentOperatorPosition] = currentOperationResult;
+        };
+
+        // Remove calculated arguments and evaluated operator from the math expression
+        var removeCurrentOperatorArguments = function() {
+
+            if (isCurrentArgumentAcceptOneArgument) {
+                mathExpression.splice(currentOperatorPosition + 1, 1);
+            } else {
+                mathExpression.splice(currentOperatorPosition + 1, 1);
+                mathExpression.splice(currentOperatorPosition - 1, 1);
+            }
+        };
 
         for (var i = 0; i < mathOperators.length; i++) {
 
-            currentOpe = mathOperators[i];
+            var currentOperatorArguments = [];
 
-            var a = getOperatorPosition(expresssion, currentOpe);
-            var b = getOperatorsArguments(expresssion, a, allMathOperators[currentOpe].isOneArgumentOperator);
-
-            // console.log(expresssion);
-            var result = calculating(currentOpe, b);
-            var gg = updateMathExpression(expresssion, result, a, allMathOperators[currentOpe].isOneArgumentOperator);
-            // debugger;
-
-            expresssion = gg;
-            console.log(expresssion);
-            
+            setCurrentOperator(mathOperators[i]);
+            setCurrentOperatorArgumentsAmount();
+            getCurrentOperatorPosition();
+            getCurrentOperatorArguments();
+            calculateOneArgumentExpression();
+            updateMathExpression();
+            removeCurrentOperatorArguments();
         }
     };
 
@@ -224,11 +231,11 @@ TODO
         separateMathExpression();
         if (!mathExpressionValidation()) return false;
         convertExpressionArgumentToNumbers();
-        console.log(mathExpression);
-
-        // var currentMathOperators = getCurrentMathOperators(separatedMathExpression);
-        // currentMathOperators.sort(sortMathOperators);
-        // implementCalculating(separatedMathExpression, currentMathOperators);
+        getCurrentMathOperators();
+        mathOperators.sort(sortMathOperators);
+        calculateCurrentExpression();
+        mathOperators = [];
+        // return mathExpression[0];
+        console.log(mathExpression[0]);
     };
-
 });
