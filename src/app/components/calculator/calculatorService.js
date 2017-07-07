@@ -1,5 +1,6 @@
 webOrganizerApp.service('calculatorService', function() {
 
+    // Describe behavior for all math operators which are included to calculator
     var allMathOperators = {
         '+': {
             priority: 1,
@@ -73,22 +74,27 @@ webOrganizerApp.service('calculatorService', function() {
         }
     };
 
-    var removeAllSpaces = function(inputString) {
-        var spacesFreeString = inputString.replace(/\s+/g, '');
-        return  spacesFreeString;
+    var mathExpression = null;
+
+    // Remove all unneeded spaces
+    var removeAllExpressionSpaces = function() {
+        mathExpression = mathExpression.replace(/\s+/g, '');
     };
 
-    var separateMathExpression = function(mathExpression) {
+    // Separate math expression on numbers and math operators
+    var separateMathExpression = function() {
 
         var filterEmptyElements = function(arrayElement) {
             return arrayElement;
         };
 
-        return mathExpression.split(/(\+|\-|\*|\/|sqrt|pow|sin|cos|tan|ctg)/)
-                             .filter(filterEmptyElements);
+        mathExpression = mathExpression
+                         .split(/(\+|\-|\*|\/|sqrt|pow|sin|cos|tan|ctg)/)
+                         .filter(filterEmptyElements);
     };
 
-    var mathExpressionValidation = function(separatedMathExpression) {
+    // Verify hasn't user entered something else except operators and numbers
+    var mathExpressionValidation = function() {
 
         var isExpressionValid = true,
             isNumeric = function(n) {
@@ -98,11 +104,13 @@ webOrganizerApp.service('calculatorService', function() {
                 return o in allMathOperators;
             };
 
-        for (var i = 0; i < separatedMathExpression.length; i++) {
+        for (var i = 0; i < mathExpression.length; i++) {
 
-            var currentMathArgument = separatedMathExpression[i];
+            var currentMathArgument = mathExpression[i];
 
-            if (!isNumeric(currentMathArgument) && !isOperator(currentMathArgument)) {
+            if (!isNumeric(currentMathArgument) && 
+                !isOperator(currentMathArgument)) {
+                
                 isExpressionValid = false;
                 break;
             }
@@ -110,6 +118,23 @@ webOrganizerApp.service('calculatorService', function() {
 
         return isExpressionValid;
     };
+
+    // Switch string argument representation to it number representation
+    var convertExpressionArgumentToNumbers = function() {
+
+        mathExpression.forEach(function(argument, argumentIndex) {
+
+            var numberArgument = parseFloat(argument);
+
+            if (numberArgument) {
+                mathExpression[argumentIndex] = numberArgument;
+            }
+
+        });
+    };
+
+// -----------------------------------------------------------------------
+TODO
 
     var getCurrentMathOperators = function(mathExpression) {
 
@@ -149,7 +174,7 @@ webOrganizerApp.service('calculatorService', function() {
     var updateMathExpression = function(mathExpression, result, operatorPosition, isOneArgumentOperator) {
 
         // var updatedExpression;
-        debugger
+        // debugger
         mathExpression[operatorPosition] = result.toString();
         if (isOneArgumentOperator) {
             mathExpression.splice(operatorPosition + 1, 1);
@@ -192,16 +217,18 @@ webOrganizerApp.service('calculatorService', function() {
         }
     };
 
-    this.calculatingService = function(mathExpression) {
+    this.implementationOfCalculator = function(inputMathExpression) {
 
-        var spaceFreeMathExpression = removeAllSpaces(mathExpression),
-            separatedMathExpression = separateMathExpression(spaceFreeMathExpression);
+        mathExpression = inputMathExpression;
+        removeAllExpressionSpaces();
+        separateMathExpression();
+        if (!mathExpressionValidation()) return false;
+        convertExpressionArgumentToNumbers();
+        console.log(mathExpression);
 
-        if (!mathExpressionValidation(separatedMathExpression)) return false;
-
-        var currentMathOperators = getCurrentMathOperators(separatedMathExpression);
-        currentMathOperators.sort(sortMathOperators);
-        implementCalculating(separatedMathExpression, currentMathOperators);
+        // var currentMathOperators = getCurrentMathOperators(separatedMathExpression);
+        // currentMathOperators.sort(sortMathOperators);
+        // implementCalculating(separatedMathExpression, currentMathOperators);
     };
 
 });
