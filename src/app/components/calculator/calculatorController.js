@@ -3,6 +3,7 @@ webOrganizerApp.controller('calculatorController', ['calculatorService', functio
     var vm = this;
 
     vm.enterField = '';
+    vm.isExpressionCorrect = true;
 
     vm.cleanEnterField = function() {
         vm.enterField = '';
@@ -30,8 +31,8 @@ webOrganizerApp.controller('calculatorController', ['calculatorService', functio
 
     vm.implementCalculating = function() {
         var mathExpression = vm.enterField || '';
-        debugger
         vm.result = calculatorService.implementationOfCalculator(mathExpression);
         vm.enterField = (vm.result || vm.result === 0) ? vm.result : vm.enterField;
+        vm.isExpressionCorrect = Boolean(vm.result);
     };
 }]);
