@@ -126,7 +126,7 @@ webOrganizerApp.service('calculatorService', function() {
         mathExpression.forEach(function(argument, argumentIndex) {
 
             var numberArgument = parseFloat(argument);
-            if (numberArgument) mathExpression[argumentIndex] = numberArgument;
+            if (numberArgument || isFinite(numberArgument)) mathExpression[argumentIndex] = numberArgument;
         });
     };
 
@@ -229,7 +229,7 @@ webOrganizerApp.service('calculatorService', function() {
         mathOperators.sort(sortMathOperators);
         calculateCurrentExpression();
         mathOperators = [];
-        console.log(mathExpression[0]);
-        // return mathExpression[0];
+        var result = mathExpression.length === 1 ? mathExpression[0] : false;
+        return result;
     };
 });

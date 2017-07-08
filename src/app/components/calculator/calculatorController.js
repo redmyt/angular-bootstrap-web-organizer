@@ -30,7 +30,8 @@ webOrganizerApp.controller('calculatorController', ['calculatorService', functio
 
     vm.implementCalculating = function() {
         var mathExpression = vm.enterField || '';
-        var result = calculatorService.implementationOfCalculator(mathExpression);
-        vm.enterField = result || "Error";
+        debugger
+        vm.result = calculatorService.implementationOfCalculator(mathExpression);
+        vm.enterField = (vm.result || vm.result === 0) ? vm.result : vm.enterField;
     };
 }]);
