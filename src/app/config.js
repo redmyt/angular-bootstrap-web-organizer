@@ -6,7 +6,7 @@ webOrganizerApp.config(function($routeProvider) {
         controllerAs: 'home'
     })
     .when('/clock', {
-        templateUrl : './app/components/clock/digitalClock.html',
+        templateUrl : './app/components/clock/clockView.html',
         controller: 'digitalClockController',
         controllerAs: 'dClock'
     })

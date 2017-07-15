@@ -1,24 +1,19 @@
-h3 {
+h3 {  
+  
+}
+
+.digitalClockTitle {
   margin-top: 10vh;
-  text-align: center;
-  font-family: Lato, sans-serif;
+  text-align: center;    
   text-transform: uppercase;
   color: #333;
 }
 
 .clicker {
   display: block;
-  margin: 0px auto;
   background-color: #98C93C;
-  border: none;
-  padding: 10px 20px;
-  color: #333;
-  font-weight: 900;
-  box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
-  cursor: pointer;
-  border-radius: 5px;
-  transition: all 50ms ease;
-  outline: none;
+  margin: 0px auto;
+  border-color: #337ab7;
 }
 
 .clicker:active {
