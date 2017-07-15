@@ -5,6 +5,11 @@ webOrganizerApp.config(function($routeProvider) {
         controller: 'homeController',
         controllerAs: 'home'
     })
+    .when('/clock', {
+        templateUrl : './app/components/clock/digitalClock.html',
+        controller: 'digitalClockController',
+        controllerAs: 'dClock'
+    })
     .otherwise({
         redirectTo: '/'
     });

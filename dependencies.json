@@ -13,6 +13,6 @@
         "./src/app/app.js",
         "./src/app/config.js",
         "./src/app/components/home/homeController.js",
-        "./src/app/components/home/digitalClockController.js"
+        "./src/app/components/clock/digitalClockController.js"
     ]
 }
