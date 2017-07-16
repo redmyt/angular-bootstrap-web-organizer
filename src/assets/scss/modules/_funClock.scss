@@ -1,0 +1,101 @@
+.funClockTitle {
+  margin-top: 10vh;
+  text-align: center;    
+  text-transform: uppercase;
+  color: #333;
+}
+
+.clicker {
+  display: block;
+  background-color: #98C93C;
+  margin: 0px auto;
+  border-color: #337ab7;
+}
+
+.clicker:active {
+  box-shadow: 0px 0px 0px rgba(0,0,0,0.5);
+  transform: translate(5px, 5px);
+}
+
+.clock-wrapper {
+  width: 250px;
+  height: 250px;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%);
+  position: relative;
+  z-index: 5;
+    
+}
+
+.clock-face {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: center;
+  background-image: url('http://www.ewt.biz/wp-content/uploads/2016/05/clockFace.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 6;
+}
+
+.hour-hand {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: center;
+  background-image: url('http://www.ewt.biz/wp-content/uploads/2016/05/hourHand.png');
+  background-position: 60% 60%;
+  background-repeat: no-repeat;
+  z-index: 7;
+  animation: clock-effect 120s infinite;
+  animation-timing-function: linear;
+}
+
+.minute-hand {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: center;
+  background-image: url('http://www.ewt.biz/wp-content/uploads/2016/05/minHand.png');
+  background-position: 50% 25%;
+  background-repeat: no-repeat;
+  z-index: 8;
+  animation: clock-effect 45s infinite;
+  animation-timing-function: linear;
+}
+
+.second-hand {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: center;
+  background-image: url('http://www.ewt.biz/wp-content/uploads/2016/05/secHand.png');
+  background-position: 35% 63%;
+  background-repeat: no-repeat;
+  z-index: 9;
+  animation: clock-effect 15s infinite;
+  animation-timing-function: linear;
+}
+
+.clock-center {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: center;
+  background-image: url('http://www.ewt.biz/wp-content/uploads/2016/05/clockCenter.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 10;
+}
+
+@keyframes clock-effect {
+  0% {
+    transform: rotate(-360deg);
+  }
+}
+
+.new {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
