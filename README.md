@@ -1,7 +1,7 @@
 # AngularJS/Bootstrap Web Organizer
 
 ## Description:
-...
+Web Organizer
 
 ## Used Technologies/Tools:
 HTML, CSS, JS, Bootstrap 3, AngularJS, pug, scss, JSON, Gulp, NPM, Git.
@@ -23,6 +23,6 @@ HTML, CSS, JS, Bootstrap 3, AngularJS, pug, scss, JSON, Gulp, NPM, Git.
 
 * Use "the same line braces style" for .js files;
 
-* Implement two person peer code-review;
+* Implement two persons peer code-review;
 
 * Deprecated nonsense commit messages.
