@@ -5,6 +5,15 @@ webOrganizerApp.controller('calculatorController', ['calculatorService', functio
     vm.enterField = '';
     vm.isExpressionCorrect = true;
 
+    vm.setRandomNumber = function() {
+        // debugger
+        var min = parseFloat(vm.minRandomNumber),
+            max = parseFloat(vm.maxRandomNumber),
+            randomNumber = Math.floor(min + Math.random() * (max + 1 - min));
+
+        vm.enterNumericSymbol(randomNumber);
+    };
+
     vm.cleanEnterField = function() {
         vm.enterField = '';
     };

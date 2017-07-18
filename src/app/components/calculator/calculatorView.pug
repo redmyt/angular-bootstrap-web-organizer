@@ -13,15 +13,15 @@
                         .col-lg-12
                             .input-group.input-group-lg.form-group
                                 span.input-group-btn
-                                    button.btn.btn-default.btn-lg.btn-warning(type="button" ng-click = "calculator.removeLastChar()") C
-                                input.form-control.enter-field(type="text" placeholder="0" ng-model = "calculator.enterField")
+                                    button.btn.btn-default.btn-lg.btn-warning(type="button" ng-click="calculator.removeLastChar()") C
+                                input.form-control.enter-field(type="text" placeholder="0" ng-model="calculator.enterField")
                     .row.form-group
                         .col-lg-2
-                            button.btn.btn-lg.btn-primary.calculator-button(type="button") Random
+                            button.btn.btn-lg.btn-primary.calculator-button(type="button" ng-click="calculator.setRandomNumber()") Random
                         .col-lg-2
-                            input.form-control.input-lg.enter-field(placeholder="from")
+                            input.form-control.input-lg.enter-field(placeholder="from" ng-model="calculator.minRandomNumber")
                         .col-lg-2
-                            input.form-control.input-lg.enter-field(placeholder="to")
+                            input.form-control.input-lg.enter-field(placeholder="to" ng-model="calculator.maxRandomNumber")
                         .col-lg-3
                             button.btn.btn-lg.btn-info.calculator-button(type="button") PI
                         .col-lg-3
