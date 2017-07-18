@@ -6,12 +6,15 @@ webOrganizerApp.controller('calculatorController', ['calculatorService', functio
     vm.isExpressionCorrect = true;
 
     vm.setRandomNumber = function() {
-        // debugger
         var min = parseFloat(vm.minRandomNumber),
             max = parseFloat(vm.maxRandomNumber),
             randomNumber = Math.floor(min + Math.random() * (max + 1 - min));
 
         vm.enterNumericSymbol(randomNumber);
+    };
+
+    vm.setPINumber = function() {
+        vm.enterNumericSymbol(Math.PI.toFixed(2));
     };
 
     vm.cleanEnterField = function() {
