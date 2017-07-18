@@ -17,6 +17,10 @@ webOrganizerApp.controller('calculatorController', ['calculatorService', functio
         vm.enterNumericSymbol(Math.PI.toFixed(2));
     };
 
+    vm.setEulerNumber = function() {
+        vm.enterNumericSymbol(Math.E.toFixed(3));
+    };
+
     vm.cleanEnterField = function() {
         vm.enterField = '';
     };
